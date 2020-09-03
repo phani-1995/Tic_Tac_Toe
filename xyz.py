@@ -4,7 +4,6 @@ import sys
 board=[i for i in range(0,9)]
 player, computer = '',''
 
-
 def select_char():
     chars=('X','O')
     if random.randint(0,1) == 0:
