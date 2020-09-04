@@ -103,7 +103,14 @@ try:
         if not moved:
             print(' >> Invalid number ! Try again !')
             continue
-        
+        if won:
+            result = '*** Congratulations ! You won ! ***'
+            break
+        elif computer_move()[1]:
+            result = '=== You lose ! =='
+            break;
+        else:
+            result = '==== TIE ====='
 except:
     print("syntax error")
 
