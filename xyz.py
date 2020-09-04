@@ -114,3 +114,6 @@ try:
 except:
     print("syntax error")
 
+
+print_board()
+print(result)
