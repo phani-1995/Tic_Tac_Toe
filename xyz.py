@@ -94,3 +94,16 @@ def space_exist():
 player, computer = select_char()
 print('Player is [%s] and computer is [%s]' % (player, computer))
 print("-----------------------Start the Game-------------------------")
+try:
+    while space_exist():
+        print_board()
+        print('# Make your move ! [1-9] : ', end='')
+        move = int(input())
+        moved, won = make_move(board, player, move)
+        if not moved:
+            print(' >> Invalid number ! Try again !')
+            continue
+        
+except:
+    print("syntax error")
+
