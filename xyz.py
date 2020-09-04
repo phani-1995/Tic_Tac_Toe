@@ -71,6 +71,14 @@ def computer_move():
             move=i
             break
 
+    if move == -1:
+        # Otherwise, try to take one of desired places.
+        for tup in moves:
+            for mv in tup:
+                if move == -1 and can_move(board, computer, mv):
+                    move = mv
+                    break
+
 print_board()
 
 player, computer = select_char()
