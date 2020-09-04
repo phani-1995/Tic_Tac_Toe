@@ -9,6 +9,24 @@ moves=((1,7,3,9),(5,),(2,4,6,8))
 # Winner combinations
 winners=((0,1,2),(3,4,5),(6,7,8),(0,3,6),(1,4,7),(2,5,8),(0,4,8),(2,4,6))
 
+# Table
+tab = range(1, 10)
+
+
+def print_board():
+    x = 1
+    for i in board:
+        end = ' | '
+        if x % 3 == 0:
+            end = ' \n'
+            if i != 1:
+                end += '---------\n'
+        char = ' '
+        if i in ('X', 'O'):
+            char = i;
+        x += 1
+        print(char, end=end)
+
 
 def select_char():
     chars=('X','O')
@@ -45,23 +63,14 @@ def make_move(brd, player, move, undo=False):
         return (True, win)
     return (False, False)
 
-# Table
-tab = range(1, 10)
+def computer_move():
+    move=-1
+    # If I can win, others don't matter.
+    for i in range(1,10):
+        if make_move(board, computer, i, True)[1]:
+            move=i
+            break
 
-
-def print_board():
-    x = 1
-    for i in board:
-        end = ' | '
-        if x % 3 == 0:
-            end = ' \n'
-            if i != 1:
-                end += '---------\n'
-        char = ' '
-        if i in ('X', 'O'):
-            char = i;
-        x += 1
-        print(char, end=end)
 print_board()
 
 player, computer = select_char()
