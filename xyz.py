@@ -72,14 +72,22 @@ def computer_move():
             break
 
     if move == -1:
+        # If player can win, block him.
+        for i in range(1, 10):
+            if make_move(board, player, i, True)[1]:
+                move = i
+                break
+
+    if move == -1:
         # Otherwise, try to take one of desired places.
         for tup in moves:
             for mv in tup:
                 if move == -1 and can_move(board, computer, mv):
                     move = mv
                     break
+    return make_move(board, computer, move)
 
-print_board()
+
 
 player, computer = select_char()
 print('Player is [%s] and computer is [%s]' % (player, computer))
